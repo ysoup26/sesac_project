@@ -41,3 +41,24 @@ exports.insertTodo = async function(userIdx,contents,type){
         return false;
     }
 };
+
+exports.selectTodoByType = async function(userIdx,type){
+    try{
+        const connection = await pool.getConnection(async (conn)=>conn);
+        try{
+            const insertTodoQuery = "SELECT todoIdx,contents FROM MyTodoDB.Todos Where userIdx = ? and type=? and status='A';";
+            const insertTodoParams = [userIdx,type];
+            const [row] = await connection.query(insertTodoQuery,insertTodoParams);
+
+            return row;
+        }catch(err){
+            console.log(` #### getUserRows Query error #####\n ${err}`);
+            return false;
+        }finally{
+            connection.release();
+        }
+    } catch(err){
+        console.log(` #### getUserRows DB error #####\n ${err}`);
+        return false;
+    }
+}

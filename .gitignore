@@ -1,3 +1,7 @@
 #gitignore
+
+#node 모듈 제외
 Schedule_Manage_Web/node_folder/node_modules
+
+#database 내용 제외
 Schedule_Manage_Web/node_folder/database.js

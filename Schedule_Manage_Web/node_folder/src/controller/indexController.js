@@ -45,3 +45,28 @@ exports.createdTodo = async function(req,res){
         });
     }
 };
+
+exports.readTodo = async function (req,res){
+    const {userIdx} = req.params;
+
+    const todos = {};
+    const types = ["do","decide","delegate","delete"];
+    for(let type of types){
+        let selectTodoByTypeRows = await indexDao.selectTodoByType(userIdx,type);
+        if(!selectTodoByTypeRows){
+            return res.send({
+                isSuccess: false,
+                code: 404,
+                message: "일정 조회 실패. 관리자에게 문의해주세요.",
+            });
+        }
+        
+        todos[type] = selectTodoByTypeRows;
+    }
+    return res.send({
+        result: todos,
+        isSuccess: false,
+        code: 200,
+        message: "일정 조회 성공.",
+    });
+}
