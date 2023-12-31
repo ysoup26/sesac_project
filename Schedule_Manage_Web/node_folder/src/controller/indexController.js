@@ -70,3 +70,36 @@ exports.readTodo = async function (req,res){
         message: "일정 조회 성공.",
     });
 }
+
+exports.updateTodo = async function(req,res){
+    let {userIdx,todoIdx,contents,status} = req.body;
+    if(!userIdx || !todoIdx){
+        return res.send({
+            isSuccess: false,
+            code: 404,
+            message: "userIdx와 todoIdx를 보내주세요.",
+        });
+    }
+    if(!contents ){
+        contents = null;
+    }
+    if(!status ){
+        contents = null;
+    }
+
+    //user와 todo가 존재하는지, 업데이트 전 확인
+    const isValidTodoRow = await indexDao.selectValidTodo(userIdx,todoIdx);
+    if(isValidTodoRow.length < 1){
+        return res.send({
+            isSuccess: false,
+            code: 404,
+            message: "유효한 요청이 아닙니다. userIdx와 todoIdx를 확인하세요.",
+        });
+    }
+    const updateTodoRow = await indexDao.updateTodo(userIdx,todoIdx,contents,status);
+    return res.send({
+        isSuccess: false,
+        code: 200,
+        message: "수정 성공.",
+    });
+}
