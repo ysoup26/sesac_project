@@ -6,4 +6,5 @@ exports.userRouter = function(app){
     app.post("/user",userController.signup);
 
     //로그인 API
+    app.post("/sign-in",userController.signin);
 };
