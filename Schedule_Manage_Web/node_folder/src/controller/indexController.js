@@ -4,13 +4,10 @@ exports.dummy = function(req,res){
     return res.send("it works");
 };
 
-exports.a = function(req,res){
-    return res.send("AAA");
-};
-
 //일정 CRUD: CREATE
-exports.createdTodo = async function(req,res){
-    const {userIdx,contents,type} = req.body;
+exports.createTodo = async function(req,res){
+    const {userIdx} = req.verifiedToken;
+    const {contents,type} = req.body;
 
     if(!userIdx || !contents ||!type){
         return res.send({
@@ -54,8 +51,7 @@ exports.createdTodo = async function(req,res){
 
 //일정 CRUD: READ
 exports.readTodo = async function (req,res){
-    const {userIdx} = req.params;
-
+    const {userIdx} = req.verifiedToken;
     const todos = {};
     const types = ["do","decide","delegate","delete"];
     for(let type of types){
@@ -80,7 +76,8 @@ exports.readTodo = async function (req,res){
 
 //일정 CRUD: UPDATE
 exports.updateTodo = async function(req,res){
-    let {userIdx,todoIdx,contents,status} = req.body;
+    const {userIdx} = req.verifiedToken;
+    let {todoIdx,contents,status} = req.body;
     if(!userIdx || !todoIdx){
         return res.send({
             isSuccess: false,
@@ -92,7 +89,7 @@ exports.updateTodo = async function(req,res){
         contents = null;
     }
     if(!status ){
-        contents = null;
+        status = null;
     }
 
     //user와 todo가 존재하는지, 업데이트 전 확인
@@ -122,7 +119,8 @@ exports.updateTodo = async function(req,res){
 
 //일정 CRUD: Delete
 exports.deleteTodo = async function(req,res){
-    const {userIdx,todoIdx} = req.params;
+    const {userIdx} = req.verifiedToken;
+    const {todoIdx} = req.params;
     if(!userIdx || !todoIdx){
         return res.send({
             isSuccess: false,
