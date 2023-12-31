@@ -8,6 +8,7 @@ exports.a = function(req,res){
     return res.send("AAA");
 };
 
+//일정 CRUD: CREATE
 exports.createdTodo = async function(req,res){
     const {userIdx,contents,type} = req.body;
 
@@ -44,8 +45,14 @@ exports.createdTodo = async function(req,res){
             message: "요청에 실패했습니다. 관리자에게 문의해주세요.",
         });
     }
+    return res.send({
+        isSuccess: true,
+        code: 200,
+        message: "일정 생성 성공.",
+    });
 };
 
+//일정 CRUD: READ
 exports.readTodo = async function (req,res){
     const {userIdx} = req.params;
 
@@ -65,12 +72,13 @@ exports.readTodo = async function (req,res){
     }
     return res.send({
         result: todos,
-        isSuccess: false,
+        isSuccess: true,
         code: 200,
         message: "일정 조회 성공.",
     });
 }
 
+//일정 CRUD: UPDATE
 exports.updateTodo = async function(req,res){
     let {userIdx,todoIdx,contents,status} = req.body;
     if(!userIdx || !todoIdx){
@@ -97,9 +105,53 @@ exports.updateTodo = async function(req,res){
         });
     }
     const updateTodoRow = await indexDao.updateTodo(userIdx,todoIdx,contents,status);
-    return res.send({
+    
+    if(!updateTodoRow){
+        return res.send({
         isSuccess: false,
+        code: 404,
+        message: "업데이트 실패. 관리자에게 문의해주세요.",
+    });}
+    
+    return res.send({
+        isSuccess: true,
         code: 200,
         message: "수정 성공.",
+    });
+}
+
+//일정 CRUD: Delete
+exports.deleteTodo = async function(req,res){
+    const {userIdx,todoIdx} = req.params;
+    if(!userIdx || !todoIdx){
+        return res.send({
+            isSuccess: false,
+            code: 404,
+            message: "userIdx와 todoIdx를 보내주세요.",
+        });
+    }
+
+    const isValidTodoRow = await indexDao.selectValidTodo(userIdx,todoIdx);
+    if(isValidTodoRow.length < 1){
+        return res.send({
+            isSuccess: false,
+            code: 404,
+            message: "유효한 요청이 아닙니다. userIdx와 todoIdx를 확인하세요.",
+        });
+    }
+
+    const deleteTodoRow = await indexDao.deleteTodo(userIdx,todoIdx);
+
+    if(!deleteTodoRow){
+        return res.send({
+        isSuccess: false,
+        code: 404,
+        message: "삭제 실패. 관리자에게 문의해주세요.",
+    });}
+
+    return res.send({
+        isSuccess: true,
+        code: 200,
+        message: "삭제 성공.",
     });
 }

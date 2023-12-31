@@ -31,13 +31,13 @@ exports.insertTodo = async function(userIdx,contents,type){
 
             return row;
         }catch(err){
-            console.log(` #### getUserRows Query error #####\n ${err}`);
+            console.log(` #### insertTodoQuery Query error #####\n ${err}`);
             return false;
         }finally{
             connection.release();
         }
     } catch(err){
-        console.log(` #### getUserRows DB error #####\n ${err}`);
+        console.log(` #### insertTodoQuery DB error #####\n ${err}`);
         return false;
     }
 };
@@ -46,19 +46,19 @@ exports.selectTodoByType = async function(userIdx,type){
     try{
         const connection = await pool.getConnection(async (conn)=>conn);
         try{
-            const insertTodoQuery = "SELECT todoIdx,contents FROM MyTodoDB.Todos Where userIdx = ? and type=? and and not(status='D');";
-            const insertTodoParams = [userIdx,type];
-            const [row] = await connection.query(insertTodoQuery,insertTodoParams);
+            const selectTodoQuery = "SELECT todoIdx,contents FROM MyTodoDB.Todos Where userIdx = ? and type=? and and not(status='D');";
+            const selectTodoParams = [userIdx,type];
+            const [row] = await connection.query(selectTodoQuery,selectTodoParams);
 
             return row;
         }catch(err){
-            console.log(` #### getUserRows Query error #####\n ${err}`);
+            console.log(` #### selectTodoQuery Query error #####\n ${err}`);
             return false;
         }finally{
             connection.release();
         }
     } catch(err){
-        console.log(` #### getUserRows DB error #####\n ${err}`);
+        console.log(` #### selectTodoQuery DB error #####\n ${err}`);
         return false;
     }
 }
@@ -73,13 +73,13 @@ exports.selectValidTodo = async function(userIdx,todoIdx){
 
             return row;
         }catch(err){
-            console.log(` #### getUserRows Query error #####\n ${err}`);
+            console.log(` #### selectValidTodoQuery Query error #####\n ${err}`);
             return false;
         }finally{
             connection.release();
         }
     } catch(err){
-        console.log(` #### getUserRows DB error #####\n ${err}`);
+        console.log(` #### selectValidTodoQuery DB error #####\n ${err}`);
         return false;
     }
 }
@@ -94,13 +94,34 @@ exports.updateTodo = async function(userIdx,todoIdx,contents,status){
 
             return row;
         }catch(err){
-            console.log(` #### getUserRows Query error #####\n ${err}`);
+            console.log(` #### updateTodoQuery Query error #####\n ${err}`);
             return false;
         }finally{
             connection.release();
         }
     } catch(err){
-        console.log(` #### getUserRows DB error #####\n ${err}`);
+        console.log(` #### updateTodoQuery DB error #####\n ${err}`);
+        return false;
+    }
+}
+
+exports.deleteTodo = async function(userIdx,todoIdx){
+    try{
+        const connection = await pool.getConnection(async (conn)=>conn);
+        try{
+            const deleteTodoQuery = "update MyTodoDB.Todos set status = 'D' where userIdx = ? and todoIdx = ?;";
+            const deleteTodoParams = [userIdx,todoIdx];
+            const [row] = await connection.query(deleteTodoQuery,deleteTodoParams);
+
+            return row;
+        }catch(err){
+            console.log(` #### deleteTodoQuery Query error #####\n ${err}`);
+            return false;
+        }finally{
+            connection.release();
+        }
+    } catch(err){
+        console.log(` #### deleteTodoQuery DB error #####\n ${err}`);
         return false;
     }
 }

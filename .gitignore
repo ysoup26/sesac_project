@@ -5,3 +5,6 @@ Schedule_Manage_Web/node_folder/node_modules
 
 #database 내용 제외
 Schedule_Manage_Web/node_folder/database.js
+
+#jwt 비밀키 제외
+Schedule_Manage_Web/node_folder/secret.js
