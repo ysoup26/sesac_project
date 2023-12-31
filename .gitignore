@@ -1,0 +1,3 @@
+#gitignore
+Schedule_Manage_Web/node_folder/node_modules
+Schedule_Manage_Web/node_folder/database.js
