@@ -2,7 +2,7 @@ ul,ol{
     list-style: none;
 }
 
-.matirx-container{
+.matrix-container{
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -12,7 +12,7 @@ ul,ol{
     margin: 1rem 4rem 4rem;
 }
 
-.matirx-item{
+.matrix-item{
     width:45%;
     height:30rem;
     border: 0.5px solid var(--dark-gray);
@@ -22,7 +22,7 @@ ul,ol{
     flex-direction: column;
 }
 
-.matirx-item-header{
+.matrix-item-header{
     text-align: center;
     background-color: var(--light-gray);
     padding: 1rem 0;
@@ -42,7 +42,7 @@ ul,ol{
 
 }
 
-.matirx-item-list{
+.matrix-item-list{
     flex: 1;
     overflow-y: auto;
 }
@@ -132,10 +132,10 @@ ul,ol{
 
 /*모바일 레이아웃 설정*/
 @media only all and (max-width: 768px){
-    .matirx-container{
+    .matrix-container{
         display: block;
     }
-    .matirx-item{
+    .matrix-item{
         width:90%;
         margin: 0 auto 1rem;
     }
