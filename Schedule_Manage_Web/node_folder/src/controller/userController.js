@@ -9,7 +9,7 @@ exports.signup = async function(req,res){
     {
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "회원가입 입력값을 확인해주세요.",
         });
     }
@@ -21,7 +21,7 @@ exports.signup = async function(req,res){
     {
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "회원가입 입력값을 확인해주세요.",
         });
     }
@@ -31,7 +31,7 @@ exports.signup = async function(req,res){
     {
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "비밀번호 형식을 확인해주세요. 8~20자 영문, 숫자 조합",
         });
     }
@@ -39,7 +39,7 @@ exports.signup = async function(req,res){
     {
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "닉네임 형식을 확인해주세요. 2~10자",
         });
     }
@@ -49,7 +49,7 @@ exports.signup = async function(req,res){
     if(isDulplicatedEmail.length > 0){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "이미 가입된 회원입니다.",
     });}
 
@@ -58,7 +58,7 @@ exports.signup = async function(req,res){
     if(!insertUserRow){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "회원가입 실패. 관리자에게 문의해주세요.",
     })};
 
@@ -76,7 +76,7 @@ exports.signin = async function(req,res){
     {
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "회원정보를 입력해주세요.",
         });
     }
@@ -87,14 +87,14 @@ exports.signin = async function(req,res){
     if(!isValidUser){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "DB 에러. 관리자에게 문의해주세요.",
         });
     }
     if(isValidUser.length < 1){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "존재하지 않는 회원입니다.",
     })};
 

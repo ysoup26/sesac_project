@@ -12,7 +12,7 @@ exports.createTodo = async function(req,res){
     if(!userIdx || !contents ||!type){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "입력값이 누락됐습니다.",
         });
     }
@@ -20,7 +20,7 @@ exports.createTodo = async function(req,res){
     if(contents.length > 20){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "contents는 20글자 이하로 설정해주세요.",
         });
     }
@@ -30,7 +30,7 @@ exports.createTodo = async function(req,res){
     if(!ValidTypes.includes(type)){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "유효한 타입이 아닙니다.",
         });
     }
@@ -38,7 +38,7 @@ exports.createTodo = async function(req,res){
     if(!insertTodoRow){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "요청에 실패했습니다. 관리자에게 문의해주세요.",
         });
     }
@@ -59,7 +59,7 @@ exports.readTodo = async function (req,res){
         if(!selectTodoByTypeRows){
             return res.send({
                 isSuccess: false,
-                code: 404,
+                code: 400,
                 message: "일정 조회 실패. 관리자에게 문의해주세요.",
             });
         }
@@ -81,7 +81,7 @@ exports.updateTodo = async function(req,res){
     if(!userIdx || !todoIdx){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "userIdx와 todoIdx를 보내주세요.",
         });
     }
@@ -97,7 +97,7 @@ exports.updateTodo = async function(req,res){
     if(isValidTodoRow.length < 1){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "유효한 요청이 아닙니다. userIdx와 todoIdx를 확인하세요.",
         });
     }
@@ -106,7 +106,7 @@ exports.updateTodo = async function(req,res){
     if(!updateTodoRow){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "업데이트 실패. 관리자에게 문의해주세요.",
     });}
     
@@ -124,7 +124,7 @@ exports.deleteTodo = async function(req,res){
     if(!userIdx || !todoIdx){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "userIdx와 todoIdx를 보내주세요.",
         });
     }
@@ -133,7 +133,7 @@ exports.deleteTodo = async function(req,res){
     if(isValidTodoRow.length < 1){
         return res.send({
             isSuccess: false,
-            code: 404,
+            code: 400,
             message: "유효한 요청이 아닙니다. userIdx와 todoIdx를 확인하세요.",
         });
     }
@@ -143,7 +143,7 @@ exports.deleteTodo = async function(req,res){
     if(!deleteTodoRow){
         return res.send({
         isSuccess: false,
-        code: 404,
+        code: 400,
         message: "삭제 실패. 관리자에게 문의해주세요.",
     });}
 
