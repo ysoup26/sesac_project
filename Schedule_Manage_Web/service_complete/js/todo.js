@@ -74,8 +74,6 @@ function cudController(event){
     const eventType = event.type;
     const key = event.key;
     
-    console.log(target,target.value,targetTagName,eventType,key);
-
     // 생성 이벤트 처리
     if(targetTagName === "INPUT" && key === "Enter"){
         createTodo(event,token);

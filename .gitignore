@@ -3,12 +3,11 @@
 #node 모듈 제외
 Schedule_Manage_Web/node_folder/node_modules
 
-#database 내용 제외
-Schedule_Manage_Web/node_folder/database.js
+#package-lock 제외
+Schedule_Manage_Web/node_folder/package-lock.json
 
 #jwt 비밀키 제외
 Schedule_Manage_Web/node_folder/secret.js
 
 #사이트 주소 제외
-Schedule_Manage_Web/service_complete/js/common.js
 Schedule_Manage_Web/service_complete/js/common_url.js
