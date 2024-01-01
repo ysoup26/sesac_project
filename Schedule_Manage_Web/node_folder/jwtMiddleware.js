@@ -4,7 +4,6 @@ const { jwtSecret } = require("./secret");
 exports.jwtMiddleware = async function (req, res, next) {
   // 헤더에서 토큰 꺼내기
   const token = req.headers["x-access-token"];
-  console.log("token check");
   // 토큰이 없는 경우
   if (!token) {
     return res.send({
@@ -18,7 +17,6 @@ exports.jwtMiddleware = async function (req, res, next) {
   try {
     const verifiedToken = jwt.verify(token, jwtSecret);
     req.verifiedToken = verifiedToken;
-    console.log(verifiedToken);
     next();
   } catch {
     return res.send({

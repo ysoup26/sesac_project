@@ -46,7 +46,7 @@ exports.selectTodoByType = async function(userIdx,type){
     try{
         const connection = await pool.getConnection(async (conn)=>conn);
         try{
-            const selectTodoQuery = "SELECT todoIdx,contents FROM MyTodoDB.Todos Where userIdx = ? and type=? and not(status='D');";
+            const selectTodoQuery = "SELECT todoIdx,contents,status FROM MyTodoDB.Todos Where userIdx = ? and type=? and not(status='D');";
             const selectTodoParams = [userIdx,type];
             const [row] = await connection.query(selectTodoQuery,selectTodoParams);
 
