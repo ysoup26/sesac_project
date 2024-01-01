@@ -66,3 +66,25 @@ exports.selectUser = async function(email,password){
         return false;
     }
 };
+
+// userIdx로 닉네임 조회
+exports.selectNicknameByUserIdx = async function(userIdx){
+    try{
+        const connection = await pool.getConnection(async (conn)=>conn);
+        try{
+            const selectNicknameByUserIdxQuery = "select * from MyTodoDB.Users where userIdx = ?;";
+            const selectNicknameByUserIdxParams = [userIdx];
+            const [row] = await connection.query(selectNicknameByUserIdxQuery,selectNicknameByUserIdxParams);
+
+            return row;
+        }catch(err){
+            console.log(` #### selectUserQuery Query error #####`);
+            return false;
+        }finally{
+            connection.release();
+        }
+    } catch(err){
+        console.log(` #### selectUserQuery DB error #####`);
+        return false;
+    }
+}

@@ -1,3 +1,13 @@
+// 토큰 검사: 토큰이 있다면 회원가입 X. 안전장치
+const token = localStorage.getItem("x-access-token");
+
+console.log(token);
+
+if(token){
+    alert("로그아웃 후 이용해주세요.");
+    window.location.href = "index.html";
+}   
+
 //입력값 유효성 검사
 
 // 이메일
