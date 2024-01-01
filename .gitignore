@@ -11,3 +11,4 @@ Schedule_Manage_Web/node_folder/secret.js
 
 #사이트 주소 제외
 Schedule_Manage_Web/service_complete/js/common.js
+Schedule_Manage_Web/service_complete/js/common_url.js
