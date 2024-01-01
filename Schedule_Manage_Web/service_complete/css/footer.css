@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+}
+
+footer{
+    background-color: var(--light-gray);
+    height: 3rem;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+    line-height: 3rem;
+    font-size: 1.2rem;
+    gap: 1rem; /* 아이템 간의 간극*/
+}
