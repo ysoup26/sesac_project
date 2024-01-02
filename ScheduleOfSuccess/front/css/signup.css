@@ -1,0 +1,52 @@
+main{
+    position: relative;
+}
+
+.signup-container {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 개체의 너비, 높이에 대한 비율 */
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.signup-container h2 {
+    font-size: 2.5rem;
+}  
+
+.signup-form{
+    width:80%;
+    margin: 2rem auto 0;
+    max-width: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-form input{
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 2;
+    padding-left: 1rem;
+    border: 3px solid var(--dark-gray);
+}
+
+#signup{
+    padding-left: 0;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: var(--main-blue);
+}
+
+#signup:hover{
+    background-color: black;
+}
+
+.message{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    visibility: hidden;
+}

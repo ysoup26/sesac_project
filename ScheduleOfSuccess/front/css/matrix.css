@@ -1,0 +1,149 @@
+ul,ol{
+    list-style: none;
+}
+
+.matrix-container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-left: 3px solid var(--dark-gray);
+    border-bottom: 3px solid var(--dark-gray);
+    margin: 1rem 4rem 4rem;
+}
+
+.matrix-item{
+    width:45%;
+    height:30rem;
+    border: 0.5px solid var(--dark-gray);
+    border-radius: 5px 5px 0 0;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.matrix-item-header{
+    text-align: center;
+    background-color: var(--light-gray);
+    padding: 1rem 0;
+}
+
+.maxtrix-title{
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.maxtrix-input{
+    width: 90%;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    padding-left: 0.5rem;
+    line-height: 1.8;
+
+}
+
+.matrix-item-list{
+    flex: 1;
+    overflow-y: auto;
+}
+
+.list-item{
+    width: 90%;
+    margin: 0.5rem auto;
+    border: 3px solid var(--light-gray);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.done-text-container{
+    flex:1;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;   
+}
+
+.todo-done{
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+/*체크박스와 인접하는 텍스트에 밑줄표시*/
+.todo-done:checked + .todo-text{
+    text-decoration: line-through;
+}
+
+.todo-text{
+    flex: 1;
+    /*todo-done을 제외한 모든 너비 차지*/
+    width:0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.update-delete-container{
+    font-size: 1.6rem;
+}
+
+.todo-update{
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.todo-delete{
+    cursor: pointer;
+}
+
+/*순서: order를 이용해서 배치를 임의로 조정*/
+#decide {
+    order:1;
+}
+
+#do {
+    order:2;
+}
+
+#delegate {
+    order:4;
+}
+
+#delete {
+    order:3;
+}
+
+/*중요도, 긴급성 포지션*/
+
+.importance{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 50%;
+    left: -3%;
+    writing-mode: vertical-rl;
+}
+
+.urgency{
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: -4%;
+}
+
+/*모바일 레이아웃 설정*/
+@media only all and (max-width: 768px){
+    .matrix-container{
+        display: block;
+    }
+    .matrix-item{
+        width:90%;
+        margin: 0 auto 1rem;
+    }
+    .importance{
+        left: -7%;
+    }
+    .urgency{
+        bottom: -2%;
+        left: 45%;
+    }
+}
