@@ -1,5 +1,7 @@
 #gitignore
 
+##Schedule_Manage_Web
+
 #node 모듈 제외
 Schedule_Manage_Web/node_folder/node_modules
 
@@ -11,3 +13,14 @@ Schedule_Manage_Web/node_folder/secret.js
 
 #사이트 주소 제외
 Schedule_Manage_Web/service_complete/js/common_url.js
+
+
+##ScheduleOfSuccess
+
+ScheduleOfSuccess/back/package-lock.json
+
+#jwt 비밀키 제외
+ScheduleOfSuccess/back/secret.js
+
+#사이트 주소 제외
+ScheduleOfSuccess/front/js/common_url.js
