@@ -5,7 +5,18 @@
 
 [새싹 홈페이지](https://sesac.seoul.kr/common/greeting.do)
 
-# 1. [성공일정]: 일정 관리 웹 사이트 
+<br>
+
+> 폴더 안내
+
+### sesac_project  </br>
+ㄴScheduleOfSuccess : 성공일정  </br>
+
+ㄴSchedule_Manage_Web: 성공일정 데모 버전 </br>
+
+<br>
+
+## 1. [성공일정]: 일정 관리 웹 사이트 
 
 ![이미지](./md_img/성공일정메인.png)
 
