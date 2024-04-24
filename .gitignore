@@ -8,7 +8,8 @@ Schedule_Manage_Web/node_folder/package-lock.json
 Schedule_Manage_Web/node_folder/secret.js
 #사이트 주소 제외
 Schedule_Manage_Web/service_complete/js/common_url.js
-
+#package 제외 - 자꾸 주의안내가 뜸
+Schedule_Manage_Web/node_folder/package.json
 
 ## ./ScheduleOfSuccess
 
