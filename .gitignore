@@ -4,6 +4,7 @@
 Schedule_Manage_Web/node_folder/node_modules
 #package-lock 제외
 Schedule_Manage_Web/node_folder/package-lock.json
+Schedule_Manage_Web/node_folder/package-lock copy.json
 #jwt 비밀키 제외
 Schedule_Manage_Web/node_folder/secret.js
 #사이트 주소 제외
@@ -17,6 +18,8 @@ Schedule_Manage_Web/node_folder/package.json
 ScheduleOfSuccess/back/node_modules
 #package-lock 제외
 ScheduleOfSuccess/back/package-lock.json
+#package-lock 제외
+ScheduleOfSuccess/back/package-lock copy.json
 #jwt 비밀키 제외
 ScheduleOfSuccess/back/secret.js
 #사이트 주소 제외
